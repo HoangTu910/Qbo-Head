@@ -179,49 +179,49 @@ while t2.is_alive():
 
 
 while True:
-    # #command = audio.listen()
-    # inFace = False
-    # success, img = cap.read()
-    # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    # faces = clf.detectMultiScale(
-    #     gray,
-    #     scaleFactor=1.3,
-    #     minNeighbors=5,
-    # )
-    #
-    # try:
-    #     for (x,y,width,height) in faces:
-    #         inFace = True
-    #         cv2.rectangle(img,(x,y),(x+width, y+height), (255,255,0),2)
-    #         x_medium = int((x + x + width)/2)
-    #
-    #     cv2.line(img, (x_medium, 0), (x_medium, 480), (0,255,0), 2)
-    #     cv2.line(img, (center, 0), (center, 480), (255, 255, 0), 2)
-    # except:
-    #     print("No Face Detected !")
-    #     img = cv2.putText(img, "NO FACE !", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,0,0), 2, cv2.LINE_AA)
-    #     cv2.imshow("Faces", img)
-    # if inFace == False:
-    #     #QBO.SetServo(1, xDefault, 100)
-    #     #QBO.SetNoseColor(0)
-    #     print("No Face Detected !")
-    #     img = cv2.putText(img, 'NO FACE !', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,0,0), 2, cv2.LINE_AA)
-    #     cv2.imshow("Faces", img)s
-    #     continue
-    # #QBO.SetNoseColor(1)
-    #
-    #
-    # #Start
+    #command = audio.listen()
+    inFace = False
+    success, img = cap.read()
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    faces = clf.detectMultiScale(
+        gray,
+        scaleFactor=1.3,
+        minNeighbors=5,
+    )
+    
+    try:
+        for (x,y,width,height) in faces:
+            inFace = True
+            cv2.rectangle(img,(x,y),(x+width, y+height), (255,255,0),2)
+            x_medium = int((x + x + width)/2)
+    
+        cv2.line(img, (x_medium, 0), (x_medium, 480), (0,255,0), 2)
+        cv2.line(img, (center, 0), (center, 480), (255, 255, 0), 2)
+    except:
+        print("No Face Detected !")
+        img = cv2.putText(img, "NO FACE !", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,0,0), 2, cv2.LINE_AA)
+        cv2.imshow("Faces", img)
+    if inFace == False:
+        #QBO.SetServo(1, xDefault, 100)
+        #QBO.SetNoseColor(0)
+        print("No Face Detected !")
+        img = cv2.putText(img, 'NO FACE !', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,0,0), 2, cv2.LINE_AA)
+        cv2.imshow("Faces", img)s
+        continue
+    #QBO.SetNoseColor(1)
+    
+    
+    #Start
 
     robot.headFollowing(x_current, y_current)
-    # mouth = robotTalk.moveMouth()
-    # text = robotTalk.robotCommand("Hello, this is testing")
-    # robotTalk.robotTalk(mouth, text)
-    #command = robot.getCommand()
-    # if command == robot.voiceCondition("follow"):
-    #     robot.headFollowing(x_current, y_current)
-    # if command == robot.voiceCondition("repete"):
-    #     print("Break")
+    mouth = robotTalk.moveMouth()
+    text = robotTalk.robotCommand("Hello, this is testing")
+    robotTalk.robotTalk(mouth, text)
+    command = robot.getCommand()
+    if command == robot.voiceCondition("follow"):
+        robot.headFollowing(x_current, y_current)
+    if command == robot.voiceCondition("repete"):
+        print("Break")
 
 
 
